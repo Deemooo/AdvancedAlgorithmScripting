@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<script language="javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				function permAlone(string) {
+					function _perm(str) {
+						console.log(str.length);
+						if(str.length < 2) return str;
+						var permutations = [];
+						for(var i = 0; i < str.length; i++) {
+							var start = str[i];
+							var remaining = str.slice(0, i) + str.slice(i + 1, str.length);
+							for(var permutation of _perm(remaining)) {
+								permutations.push(start + permutation);
+							}
+						}
+						return permutations;
+					}
+					return _perm(string).filter(function(str) {
+						return !/(\w)\1/.test(str);
+					}).length;
+				}
+				console.log(permAlone("abcdefa"));
+
+			})
+		</script>
+	</body>
+
+</html>

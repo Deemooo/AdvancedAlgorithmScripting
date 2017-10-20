@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<script language="javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				function updateInventory(arr1, arr2) {
+					// 提取第二个元素，成为一个新数组 valueArr
+					var valueArr = arr1.map(function(e) {
+						return e[1];
+					});
+					for(var i = 0; i < arr2.length; i++) {
+						var index = valueArr.indexOf(arr2[i][1]);
+						if(index > -1) {
+							arr1[index][0] += arr2[i][0];
+						} else {
+							arr1.push(arr2[i]);
+						}
+					}
+					return arr1.sort(function(a, b) {
+						return a[1] > b[1] ? 1 : -1;
+					});
+				}
+
+				// 仓库库存示例
+				var curInv = [
+					[21, "Bowling Ball"],
+					[2, "Dirty Sock"],
+					[1, "Hair Pin"],
+					[5, "Microphone"]
+				];
+
+				var newInv = [
+					[2, "Hair Pin"],
+					[3, "Half-Eaten Apple"],
+					[67, "Bowling Ball"],
+					[7, "Toothpaste"]
+				];
+
+				updateInventory(curInv, newInv);
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<script language="javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				function sym(args) {
+					//					var arr = Array.from(args);
+					var arr = [...arguments];
+					var newArr = arr.reduce(difference);
+
+					function difference(a, b) {
+						var conArr = a.concat(b);
+						var resArr = [];
+						for(let i = 0, len = conArr.length; i < len; i++) {
+							if(!(a.indexOf(conArr[i]) !== -1 && b.indexOf(conArr[i]) !== -1)) {
+								resArr.push(conArr[i]);
+							} else {
+								continue;
+							}
+						}
+						return resArr;
+					}
+
+					function filterArr(item, index, arr) {
+						return arr.indexOf(item) === index ? true : false;
+					}
+					return newArr.filter(filterArr);
+				}
+
+				console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]));
+
+			})
+		</script>
+	</body>
+
+</html>
