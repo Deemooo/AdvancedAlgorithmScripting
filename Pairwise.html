@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<script language="javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				function pairwise(arr, arg) {
+					var res = 0;
+					arr.forEach(function(item) {
+						var indTwo = arr.indexOf(item);
+						var indOne = arr.indexOf(arg - item, indTwo + 1);
+						if(indOne !== -1 && indOne !== indTwo) {
+							res += indOne + indTwo;
+							arr.splice(indOne, 1, undefined);
+							arr.splice(indTwo, 1, undefined);
+						}
+
+					});
+
+					return res;
+				}
+
+				console.log(pairwise([1, 1, 1], 2));
+
+			})
+		</script>
+	</body>
+
+</html>
