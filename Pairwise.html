@@ -13,6 +13,7 @@
 				function pairwise(arr, arg) {
 					var res = 0;
 					arr.forEach(function(item) {
+
 						var indTwo = arr.indexOf(item);
 						var indOne = arr.indexOf(arg - item, indTwo + 1);
 						if(indOne !== -1 && indOne !== indTwo) {
@@ -27,6 +28,8 @@
 				}
 
 				console.log(pairwise([1, 1, 1], 2));
+
+
 
 			})
 		</script>
